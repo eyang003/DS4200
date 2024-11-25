@@ -127,15 +127,16 @@
 ;
     }
 
-    .navbar_menu.active{
+    .navbar_menu.active {
         background: #4837ff;
-        top:100%;
+        top: 100%;
         opacity: 1;
-        transition: all 0,5s ease;
+        transition: all 0.5s ease;
         z-index: 99;
-        height:50vh;
+        height: 50vh;
         font-size: 1.6rem;
     }
+
 
     #navbar_logo{padding-left: 25px;}
 
