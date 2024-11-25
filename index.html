@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change on Agriculture</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Navbar-->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar_logo">CCoA</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="/" class="navbar_link">
+                    Home </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="/study.html" class="navbar_link">
+                    Dataset </a>
+                </li>
+                <li class="navbar_btn">
+                    <a href="/study.html" class="button">
+                    Join us </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Main-->
+    <!-- Main -->
+    <div class="main">
+        <div class="main_container">
+            <!-- Title Section -->
+            <div class="main_title">
+                <div class="title_box">
+                    <h1>How does Climate Change affect Agriculture</h1>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="content">
+                <h2>Background</h2>
+                <p>As global temperatures rise and precipitation patterns change, agricultural practices are forced to adapt. Understanding how climate and adaptation strategies impact crop yields and economic outcomes is crucial for mitigating the effects of climate change on food production. By analyzing how different regions are responding to climate variability, we can identify successful strategies that could be applied globally to ensure food security.</p>
+                <h2>The data source</h2>
+                <p>This dataset includes agricultural data from 1990 to 2024, covering a wide range of crops, countries, and regions. It tracks factors like temperature, precipitation, CO2 emissions, crop yields, and economic impacts. Size of Data: The dataset contains 10,000 records across 10 countries, with 10 attributes per entry, including crop types, climate data, and adaptation strategies.</p>
+                <h3>Attributes</h3>
+                <ul>
+                    <li>Year (1990 - 2024)</li>
+                    <li>Country</li>
+                    <li>Crop Type (barley, coffee, corn, cotton, fruits, rice, soybeans, sugarcane, vegetables, wheat)</li>
+                    <li>Average Temperature (°C)</li>
+                    <li>Total Precipitation (mm)</li>
+                    <li>CO2 Emissions (metric tons)</li>
+                    <li>Crop Yield (metric tons per hectare)</li>
+                    <li>Extreme Weather Events (0 - 10)</li>
+                    <li>Irrigation Access (0 - 100)</li>
+                    <li>Pesticide Use (kilogram per hectare)</li>
+                    <li>Fertilizer Use (kilogram per hectare)</li>
+                    <li>Soil Health Index (0 - 100)</li>
+                    <li>Adaption Strategies (crop rotation, drought-resistant crops, organic farming, water management, no adaptation)</li>
+                    <li>Economic Impact (in million USD)</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h2 style="text-align:center; margin-top:15px;">Global Overview of Climate Change and Agriculture</h2>
+
+                <p style="text-align:center; margin-top:15px;">This can be done in a number of ways. We basically just want to show the trends of the data to show viewers what's going on. We could start with showing AVG TEMP AND AVG PERCIPITATION from beginning of data to most recently</p>
+                
+                <h3 style="text-align:center; margin-top:15px;">Average Temperature and Total Precipitation Trends</h3>
+                <img src="plots/avg_temp&tota_percipitation_trend.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <p>Show rise in extreme weather events and CO2 emissions. This would then give context to the below visualizations as viewers would see a strong correlation between increase in extreme weather and emissions and a decrease in crop yield.</p>
+                
+                <h3 style="text-align:center; margin-top:15px;">Rise in Extreme Weather Events and CO2 Emissions</h3>
+                <img src="plots/rise_in_Extreme_Weather Event can co2 Emmisions.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                
+                <h3 style="text-align:center; margin-top:15px;">Global Crop Yield Over Time</h3>
+                <img src="plots/Global Crop Yield and Extreme Weather Events (1990-2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                
+                <h3 style="text-align:center; margin-top:15px;">Temperature on Crop Yield</h3>
+                <img src="plots/Impact of Temperature on Crop Yield (Colored by Extreme Weather Events).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                
+                <h2 style="text-align:center; margin-top:15px;">Impact on Crop Yields</h2>
+                <p style="text-align:center; margin-top:15px;">Compare how different crop yields (3 top crops, rice wheat corn, other combo) over time. It shouldn't be a straight line, but it should def decrease over time.</p>
+
+                <h3 style="text-align:center; margin-top:15px;">Crop Yield Trends Over Time for Top Crops</h3>
+                <img src="plots/Crop Yield Trends Over Time for Top Crops.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <p>How have some regions done better and some done much worse as weather patterns change over time. Inevitably, the varying weather will lengthen some growing seasons and shorten others. Show this in a visualization.</p>
+                <h3 style="text-align:center; margin-top:15px;">Country Crop Yields Over Time</h3>
+                <img src="plots/Country Crop Yields Over Time.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <h2 style="text-align:center; margin-top:15px;">Adaptions Strategies in Action and their Results</h2>
+                <p>Show where different adaption strategies are being implemented. The different strategies will depend on what the changing weather in messing up. We can then compare/analyze how well they have worked to mitigate effects of changing climate.</p>
+                
+                <h3 style="text-align:center; margin-top:15px;">Effectiveness of Adaptation Strategies</h3>
+                <img src="plots/Effectiveness of Adaptation Strategies.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <h2 style="text-align:center; margin-top:15px;">Economic Costs</h2>
+                <p>Now let's see the economic impact on regions that did implement adaption strategies vs those that did not. Would be super cool to implement some kind of COST-BENEFIT ANALYSIS of different strategies that worked and then their impact on productivity/economy to see if they are worth while solutions, etc.</p>
+                <h3 style="text-align:center; margin-top:15px;">Economic and Productivity Impact: With vs Without Adaptation</h3>
+                <img src="plots/Economic and Productivity Impact With vs Without Adaptation.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <h2 style="text-align:center; margin-top:15px;">Effects of Modern Technology </h2>
+                <p>Would be potentially interesting and important to draw attention to how access to IRRIGATION, FERTILIZER, PESTICIDES, etc affects crop yields. We would probably find that countries with better access to more modern tech would have an easier time mitigating affects of climate change.</p>
+                <p>This could then support a suggestion/solution for our findings. For example, if we are able to show that access to modern tech in a key piece of mitigating crop yield decline. Then we could propose global policy to address spreading successful adaption strategies to countries that do not have access atm. On the other hand, if we find that modern tech has no positive outcomes (unlikely, but possible), we could draw a narrative that humanity has doomed itself and then propose how the world has to work together or whatever to stop emissions (elect better politicians, write to local gov, become activits, etc).</p>
+                <h3 style="text-align:center; margin-top:15px;">Plot showing that technology (within our dataset) doesn't necessarily contribute to crop yield differences.</h3>
+                <h3 style="text-align:center; margin-top:15px;">Crop Yield Trends: Advanced vs Least Advanced Countries</h3>
+                <img src="plots/Crop Yield Trends Advanced vs Least Advanced Countries.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <h2 style="text-align:center; margin-top:15px;">Regional Examples </h2>
+                <p>This is where we could end on a positive where we could exemplify where specific places have had success implementing adaption strategies and maintaining yields and boasting a strong economy. This could come from look at patterns over time like if a country/region had been hit by a tsunami the year before, how have water management systems managed to restore some of the crop yield after previous devastation. </p>
+                <h3 style="text-align:center; margin-top:15px;">This plot shows that in the USA, adaptation strategies do not impact economic impact but they might impact crop yield.</h3>
+                <img src="plots/Economic Impact and Crop Yields by Adaptation Strategy in USA.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <h2 style="text-align:center; margin-top:15px;">In contrast, these show that adaptation strategies might not really contribute much to crop yield </h2>
+                <img src="plots/Average Crop Yield by Adaptation Strategy.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <img src="plots/Most Popular Adaptation Strategies.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+
+
+                <h2 style="text-align:center; margin-top:15px;">Here are a few 2024 Global Mapping Plots </h2>
+                <img src="plots/Pesticide Usage by Country (2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                
+                <h2 style="text-align:center; margin-top:15px;">Crop Yield by Country (Global Map)</h2>
+                <img src="plots/Crop Yield by Country (2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <h3 style="text-align:center; margin-top:15px;">Total (Summed) Temperature Change Global Map</h3>
+                <img src="plots/Total Summed Yearly Temperature Change (1990-2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <h3 style="text-align:center; margin-top:15px;">Continuing the search of 'does this directly contribute to crop yield' , this shows pesticide and fertilizer use don't vary much between these countries, whereas crop yield really varies. Therefore, pesticide and fertilizer are not very assiciated with crop yield within our dataset.</h3>
+                <img src="plots/Pesticide and Fertilizer Use by Country vs Crop Yield.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <h3 style="text-align:center; margin-top:15px;">This model (below) shows that in our dataset the countries with highest vs. lowest technology did not have much difference in climate risk, indicating that either technology does not have a big impact on climate risk inherently or that our countries don't have enough technological range in order to prove a significant difference in climate risk..</h3>
+                <img src="plots/Climate Risk Trends Advanced vs Least Advanced Countries.png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+                <h2 style="text-align:center; margin-top:15px;">Climate Risk and Crop Yield by Year</h2>
+                <img src="plots/Climate Risk vs Crop Yields (1990-2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+                <img src="plots/Total Summed Yearly Temperature Change by Country (1990-2024).png" alt="Climate Impact" style="width:100%; max-width:500px; display:block; margin:auto;">
+
+
+                <h2 style="text-align:center; margin-top:15px;">Click the button below to access the interactive plot</h2>
+            </div>
+            <div class="button-container">
+                <button onclick="window.location.href='Global Crop Yield and Extreme Weather Events (1990-2024).html';"> Global Crop Yield and Extreme Weather Events (1990-2024)</button>
+                <button onclick="window.location.href='Impact of Temperature on Crop Yield (Colored by Extreme Weather Events).html';">Impact of Temperature on Crop Yield (Colored by Extreme Weather Events)</button>
+                <button onclick="window.location.href='Total Summed Yearly Temperature Change (1990-2024).html';">Total Summed Yearly Temperature Change (1990-2024)</button>
+                <button onclick="window.location.href='interactive_plot.html';">Climate Risk Index vs CO2_Emissions_MT (Scaled, 1990-2024)</button>
+
+
+            </div>
+                
+        </div>
+    </div>
+    <script src ="app.js"></script>
+</body>
+</html>
