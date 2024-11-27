@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Trends</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h1>How Climate Change Impacts Agriculture</h1>
+        <p>Exploring global and regional trends, and the effectiveness of adaptation strategies.</p>
+    </header>
+
+    <!-- navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="global_trends.html">Global Trend</a></li>
+            <li><a href="regional_trends.html">Regional Analysis</a></li>
+            <li><a href="adaptation_strategies.html">Adaptation Strategies</a></li>
+            <li><a href="https://github.com/eyang003/DS4200" target="_blank" class="github-btn">Visit our GitHub Repo!</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Global Climate Change</h1>
+        <p>An overview of how climate change is reshaping agriculture worldwide. Because we had 10k observations,
+            we wanted to identify where to start first by identifying any correlations through generating a heatmap 
+            correlation matrix to help us identify where to start.
+        </p>
+            <img src="plots/correlation_matrix_heatmap.png" alt="Correlation of attributes">
+
+        <section>
+            <h2>Global Climate Change</h2>
+            <p>Based on the matrix above, we identified that the average temperature and crop yield had a slightly larger
+                correlation than other attributes so we started by analyzing global changes in temperature.
+                The map below shows the change in temperatures summed over the years of 1990 - 2024. To do this, we calculated the average
+                temperature for each country from 1990 - 1991 and subtracted it from the average of 2023 - 2024. We chose to use 2 year spans to
+                smooth out any anomolies in the data for a more accurate view, however, one limitation to this data is that the month the data is 
+                recorded is not available, so it is not exactly 'apples to apples'. Even so, just over 3 decades, and the temperature
+                differences are apparent, which led us to want to explore how this might affect crop yields.
+
+            </p>
+            <iframe src="global_temp_change.html" width="100%" height="500"></iframe>
+        </section>
+        
+
+        <section>
+            <h2>Temperature and Crop Yields</h2>
+            <p>Since 1990, global crop yields have faced fluctuations due to rising temperatures, changes in precipitation, and increased CO2 emissions.</p>
+            <img src="plots/Global_Crop_Yield_Trends.png" alt="Global Crop Yield Trends">
+        </section>
+
+        <section>
+            <h2>Climate and CO2 Emissions</h2>
+            <p>Global average temperatures have risen in tandem with CO2 emissions, affecting crop productivity and posing a major challenge to food security.</p>
+            <img src="plots/CO2_and_Temperature_Trends.png" alt="CO2 and Temperature Trends">
+        </section>
+
+        <section>
+            <h2>Extreme Weather Events</h2>
+            <p>The frequency of extreme weather events, such as droughts and floods, has increased significantly, impacting agricultural stability worldwide.</p>
+            <img src="plots/Extreme_Weather_Trends.png" alt="Extreme Weather Trends">
+        </section>
+    </main>
+</body>
+</html>
