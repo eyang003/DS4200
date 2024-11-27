@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Problem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="header-text">
+            <h1>Climate Change Impact on Agriculture</h1>
+            <p>Exploring global and regional trends, and the effectiveness of adaptation strategies.</p>
+        </div>
+    </header>
+
+    <!-- navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="the_problem.html">The Problem</a></li>
+            <li><a href="regional_trends.html">Regional Analysis</a></li>
+            <li><a href="adaptation_strategies.html">Adaptation Strategies</a></li>
+            <li><a href="https://github.com/eyang003/DS4200" target="_blank" class="github-btn">Visit our GitHub Repo!</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Introduction section -->
+        <section>
+            <h2>The Problem: Global Climate Change</h2>
+            <p>Knowing that climate change is a rising problem, we wanted to get an overview of our data which had 10,000 observations.
+                To identify key correlations between climate change factors and agricultural yield, we started our investigation by 
+                generating a heatmap correlation matrix to pinpoint the areas that require closer examination.</p>
+            <img src="plots/correlation_matrix_heatmap.png" alt="Correlation of attributes">
+        </section>
+
+        <!-- Temperature Change Section -->
+        <section>
+            <h2>Global Temperature Change</h2>
+            <p>Based on the correlation matrix, we found the strongest relationship between average temperature and crop yields, though not that significant we still wanted to explore this factor. 
+                This section focuses on global changes in temperature over the years and global impacts on crop yield.</p>
+            <p>The map below shows the change in temperatures from 1990 to 2024. To capture trends more accurately, we calculated the average temperature for each country over two-year spans 
+                (1990-1991 and 2023-2024). This approach helps smooth out any anomalies, though one limitation is the absence of precise monthly data, which affects the comparison. Despite this, 
+                the temperature differences over the past three decades are striking, and we aim to explore how this shift impacts crop yields.</p>
+            <iframe src="plots/global_temp_change.html" width="100%" height="500"></iframe>
+        </section>
+
+        <!-- Temperature and Crop Yield Trends -->
+        <section>
+            <h2>Temperature and Crop Yields</h2>
+            <p>To understand the implications of climate and temperature changes, we wanted to understand what the general impact that temperature has on crop yields. 
+                From plotting crop yield against the average temperatures, we see the optimal temperature around 10 - 20 °C, though noting that the temperatures in
+                our data are rounded which explains the harsh cut-offs in the trend.
+            </p>
+            <img src="plots/temp_crop_yield.png" alt="Global Crop Yield Trends">
+        </section>
+
+        <!-- Climate and CO2 Emissions Section -->
+        <section>
+            <h2>Climate and CO2 Emissions</h2>
+            <p>Global temperatures have risen in tandem with CO2 emissions, which has had a significant effect on crop productivity. This section examines the relationship between climate change and CO2 emissions, highlighting their role in food security challenges.</p>
+            <img src="plots/CO2_and_Temperature_Trends.png" alt="CO2 and Temperature Trends">
+        </section>
+
+        <!-- Extreme Weather Events Section -->
+        <section>
+            <h2>Extreme Weather Events</h2>
+            <p>The frequency of extreme weather events, such as droughts and floods, has significantly increased over the past few decades. These events have disrupted agricultural stability worldwide, exacerbating the challenges posed by climate change.</p>
+            <img src="plots/Extreme_Weather_Trends.png" alt="Extreme Weather Trends">
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer>
+        <p>&copy; 2024 Climate Change Impact on Agriculture. All rights reserved.</p>
+    </footer>
+</body>
+</html>
