@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regional Trends</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -34,6 +35,13 @@
         </section>
 
         <section>
+            <h2>Regional Analysis: CO2 Emissions vs Crop Yields</h2>
+            <p>This section visualizes the relationship between CO2 emissions and crop yields for Nigeria and Russia.</p>
+            <!-- Create a div where the D3 plot will be rendered -->
+            <div id="scatterPlot"></div>
+        </section>
+
+        <section>
             <h2>[PLACEHOLDER SECTION]</h2>
             <p>[SECTION PLACEHOLDER]</p>
             <img src="plots/Regional_Weather_Trends.png" alt="Regional Weather Trends">
@@ -49,5 +57,73 @@
     <footer>
         <button onclick="window.location.href='index.html'">Back to Home</button>
     </footer>
+    <script>
+        // D3.js code to create the plot
+        d3.json("nigeria_russia_data.json").then(function(data) {
+            // Filter data for Nigeria and Russia
+            const nigeria_russia_data = data.filter(d => d.Country === "Nigeria" || d.Country === "Russia");
+
+            const width = 800, height = 400;
+
+            // Create the SVG container for the plot
+            const svg = d3.select("#scatterPlot")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            // Scales for the axes
+            const xScale = d3.scaleLinear()
+                .domain([0, d3.max(nigeria_russia_data, d => +d.CO2_Emissions_MT)])
+                .range([50, width - 50]);
+
+            const yScale = d3.scaleLinear()
+                .domain([0, d3.max(nigeria_russia_data, d => +d.Crop_Yield_MT_per_HA)])
+                .range([height - 50, 50]);
+
+            const colorScale = d3.scaleOrdinal()
+                .domain(["Nigeria", "Russia"])
+                .range(["green", "orange"]);
+
+            // Add x-axis
+            svg.append("g")
+                .attr("transform", `translate(0,${height - 50})`)
+                .call(d3.axisBottom(xScale));
+
+            // Add y-axis
+            svg.append("g")
+                .attr("transform", "translate(50, 0)")
+                .call(d3.axisLeft(yScale));
+
+            // Scatter plot: CO2 Emissions vs Crop Yield
+            svg.selectAll("circle")
+                .data(nigeria_russia_data)
+                .enter()
+                .append("circle")
+                .attr("cx", d => xScale(+d.CO2_Emissions_MT))
+                .attr("cy", d => yScale(+d.Crop_Yield_MT_per_HA))
+                .attr("r", 8)
+                .attr("fill", d => colorScale(d.Country))
+                .on("mouseover", (event, d) => {
+                    // Show tooltip on hover
+                    d3.select(".tooltip")
+                        .style("opacity", 1)
+                        .html(`Country: ${d.Country}<br>CO2 Emissions: ${d.CO2_Emissions_MT}<br>Crop Yield: ${d.Crop_Yield_MT_per_HA}`)
+                        .style("left", `${event.pageX + 5}px`)
+                        .style("top", `${event.pageY - 28}px`);
+                })
+                .on("mouseout", () => {
+                    // Hide tooltip when mouse leaves
+                    d3.select(".tooltip")
+                        .style("opacity", 0);
+                });
+
+            // Tooltip (you can style it as needed)
+            d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+        }).catch(function(error) {
+            console.error('Error loading the JSON:', error);
+        });
+    </script>
 </body>
 </html>
