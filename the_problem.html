@@ -20,14 +20,13 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="the_problem.html">The Problem</a></li>
-            <li><a href="regional_trends.html">Regional Analysis</a></li>
             <li><a href="adaptation_strategies.html">Adaptation Strategies</a></li>
             <li><a href="https://github.com/eyang003/DS4200" target="_blank" class="github-btn">Visit our GitHub Repo!</a></li>
         </ul>
     </nav>
 
     <main>
-        <!-- Introduction section -->
+        <!-- introduction -->
         <section>
             <h2>The Problem: Global Climate Change</h2>
             <p>Knowing that climate change is a rising problem, we wanted to get an overview of our data which had 10,000 observations.
@@ -36,7 +35,7 @@
             <img src="plots/correlation_matrix_heatmap.png" alt="Correlation of attributes">
         </section>
 
-        <!-- Temperature Change Section -->
+        <!-- temperature change section -->
         <section>
             <h2>Global Temperature Change</h2>
             <p>Based on the correlation matrix, we found the strongest relationship between average temperature and crop yields, though not that significant we still wanted to explore this factor. 
@@ -47,7 +46,7 @@
             <iframe src="plots/global_temp_change.html" width="100%" height="500"></iframe>
         </section>
 
-        <!-- Temperature and Crop Yield Trends -->
+        <!-- temperature and crop yield trends -->
         <section>
             <h2>Temperature and Crop Yields</h2>
             <p>To understand the implications of climate and temperature changes, we wanted to understand what the general impact that temperature has on crop yields. 
@@ -57,13 +56,34 @@
             <img src="plots/temp_crop_yield.png" alt="Global Crop Yield Trends">
         </section>
 
-        <!-- Page summary -->
+        <!-- regional trends -->
         <section>
-            <h2>Rising temperatures and agricultural yield</h2>
-            <p>From the analysis above, it is clear to see that temperature shows some correlation with crop yields across the globe and [research point on climate change and rising temp?]
-                Despite this, technology is also evolving to combat environmental factors that are beyond our direct control through adaption strategies, fertilizer use, etc. This website
-                dives deeper into looking at <a href="regional_trends.html" target="_blank">country-specific trends</a> and what drives their increase / decrease in crop yield, as well as looking at what <a href="adaptation_strategies.html" 
-                target="_blank">adaptation strategies</a> have been the most imapctful so far.
+            <h2>Country Crop Yields Over Time</h2>
+            <p>The second most significantly correlated (although still low) varaiable to crop yield was CO2 emissions. 
+                To help us identify if this differed between well-performing and poor-performing countries,we started by identifying countries that have seen the most/least
+                improvement in crop yields from 1990 - 2024. The graph below calculates the average crop yield for a country in 1990 compared to 2024 and we identified
+                the top 3 countries being Brazil, China, and Russia whereas the bottom 3 were Argentina, Nigeria, and the USA.</p>
+            <img src="plots/country_crop_yields.png" alt="Countries with most and least increase in crop yields">
+        </section>
+
+        <section>
+            <h2>Regional Analysis: CO2 Emissions vs Crop Yields</h2>
+            <p>To analyze the difference in C02 emissions of high and low crop yield countries and if it differed / affected the crop production in these countries, we took 1 counry from the top 3 (Russia),
+                and 1 from the bottom (Nigeria) to visualize how CO2 emissions differed. Through the graph below as well as a correlation analysis, we found that the correlation coefficients were very similar
+                between the two countries (Nigeria: -0.10, Russia: -0.09) meaning that while CO2 emissions likely do decrease crop yields to a degree, this is not the only factor.</p>
+            <!-- div where d3 plot will be rendered -->
+            <div id="legend"></div>
+            <div id="scatterPlot"></div>
+        </section>
+        <!-- page summary -->
+        <section>
+            <h2>Rising temperatures, CO2 emissions, and agricultural yield</h2>
+            <p>From the analysis above, it is clear to see that temperature and CO2 emissions have slight correlation with crop yields across the globe and though given all the factors that contribute to 
+                agricultural yields, it is difficult to identify just one factor that causes a increase and / or decrease in crop yields. Even between high-yield and low-yield countries, the same trends 
+                apply meaning that other factors are likely influencing their crop yields beyond simply temperature or CO2 emissions. According to studies, "key crops have 'declined' by around 5% due to climate change. 
+                Yet global yields have increased by more than 200% over this period. What this “5% decline” actually means is that yields are 5% lower than they would have been in a world without climate change" (<a href="https://ourworldindata.org/will-climate-change-affect-crop-yields-future" target="_blank">ourworldindata.org)</a>. 
+                In other words, technology is also evolving to combat environmental factors that are beyond our direct control through adaption strategies, fertilizer use, etc. To better understand this, we dive deeper into looking at looking at 
+                what <a href="adaptation_strategies.html" target="_blank">adaptation strategies</a> have been the most impactful so far and if these have had an impact on crop yields.
         </p>
         </section>
     </main>
@@ -72,5 +92,121 @@
     <footer>
         <p>&copy; 2024 Climate Change Impact on Agriculture. All rights reserved.</p>
     </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // d3 plot
+        d3.json("https://eyang003.github.io/DS4200/nigeria_russia_data.json")
+            .then(function(data) {
+                // filter data for Nigeria and Russia
+                const nigeria_russia_data = data.filter(d => d.Country === "Nigeria" || d.Country === "Russia");
+
+                const width = 800, height = 400;
+
+                // create SVG element
+                const svg = d3.select("#scatterPlot")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+                    
+                svg.append("text")
+                    .attr("x", width / 2)
+                    .attr("y", 20)
+                    .style("text-anchor", "middle")
+                    .style("font-size", "16px")
+                    .style("font-weight", "bold")
+                    .text("CO2 Emissions vs Crop Yield: Nigeria and Russia");
+
+                const xScale = d3.scaleLinear()
+                    .domain([0, d3.max(nigeria_russia_data, d => +d.CO2_Emissions_MT)])
+                    .range([50, width - 50]);
+
+                const yScale = d3.scaleLinear()
+                    .domain([0, d3.max(nigeria_russia_data, d => +d.Crop_Yield_MT_per_HA)])
+                    .range([height - 50, 50]);
+
+                const colorScale = d3.scaleOrdinal()
+                    .domain(["Nigeria", "Russia"])
+                    .range(["green", "orange"]);
+
+                // add axes
+                svg.append("g")
+                    .attr("transform", `translate(0,${height - 50})`)
+                    .call(d3.axisBottom(xScale));
+
+                svg.append("g")
+                    .attr("transform", "translate(50, 0)")
+                    .call(d3.axisLeft(yScale));
+                
+                // axis labels
+                svg.append("text")
+                    .attr("transform", `translate(${width / 2}, ${height - 10})`)
+                    .style("text-anchor", "middle")
+                    .text("CO2 Emissions (MT)");
+
+                svg.append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("x", -height / 2)
+                    .attr("y", 12)
+                    .style("text-anchor", "middle")
+                    .text("Crop Yield (MT per HA)");
+
+                // scatter plot: CO2 Emissions vs Crop Yield
+                svg.selectAll("circle")
+                    .data(nigeria_russia_data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => xScale(+d.CO2_Emissions_MT))
+                    .attr("cy", d => yScale(+d.Crop_Yield_MT_per_HA))
+                    .attr("r", 4)
+                    .attr("fill", d => colorScale(d.Country))
+                    .on("mouseover", (event, d) => {
+                        d3.select(".tooltip")
+                            .style("opacity", 1)
+                            .html(`Country: ${d.Country}<br>CO2 Emissions: ${d.CO2_Emissions_MT}<br>Crop Yield: ${d.Crop_Yield_MT_per_HA}`)
+                            .style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", () => {
+                        d3.select(".tooltip")
+                            .style("opacity", 0);
+                    });
+
+                // Tooltip
+                d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+
+                // add legend
+                const legend = d3.select("#legend").append("svg")
+                    .attr("width", 200)
+                    .attr("height", 100);
+
+                const legendItems = [
+                    { country: "Nigeria", color: "green" },
+                    { country: "Russia", color: "orange" }
+                ];
+
+                const legendGroup = legend.selectAll("g")
+                    .data(legendItems)
+                    .enter().append("g")
+                    .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+
+                legendGroup.append("rect")
+                    .attr("width", 20)
+                    .attr("height", 20)
+                    .attr("fill", d => d.color);
+
+                legendGroup.append("text")
+                    .attr("x", 30)
+                    .attr("y", 15)
+                    .text(d => d.country)
+                    .style("font-size", "14px")
+                    .attr("alignment-baseline", "middle");
+            })
+            .catch(function(error) {
+                console.log("Error loading the JSON: ", error);
+            });
+    </script>
 </body>
 </html>

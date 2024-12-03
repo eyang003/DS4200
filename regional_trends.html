@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regional Trends</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -36,94 +35,124 @@
 
         <section>
             <h2>Regional Analysis: CO2 Emissions vs Crop Yields</h2>
-            <p>This section visualizes the relationship between CO2 emissions and crop yields for Nigeria and Russia.</p>
-            <!-- Create a div where the D3 plot will be rendered -->
+            <p>This section visualizes the relationship between CO2 emissions and crop yields for different regions, specifically focusing on Nigeria and Russia. The D3 plot below shows how changes in CO2 emissions correlate with crop yields in these countries over time.</p>
+            <!-- div where D3 plot will be rendered -->
             <div id="scatterPlot"></div>
+            <div id="legend"></div>
         </section>
 
-        <section>
-            <h2>[PLACEHOLDER SECTION]</h2>
-            <p>[SECTION PLACEHOLDER]</p>
-            <img src="plots/Regional_Weather_Trends.png" alt="Regional Weather Trends">
-        </section>
-
-        <section>
-            <h2>[PLACEHOLDER SECTION]</h2>
-            <p>[SECTION PLACEHOLDER]</p>
-            <img src="plots/Pesticide_vs_Fertilizer_Yields.png" alt="Pesticide vs Fertilizer Yields">
-        </section>
     </main>
 
     <footer>
         <button onclick="window.location.href='index.html'">Back to Home</button>
     </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        // D3.js code to create the plot
-        d3.json("nigeria_russia_data.json").then(function(data) {
-            // Filter data for Nigeria and Russia
-            const nigeria_russia_data = data.filter(d => d.Country === "Nigeria" || d.Country === "Russia");
+        // d3 plot
+        d3.json("https://eyang003.github.io/DS4200/nigeria_russia_data.json")
+            .then(function(data) {
+                // filter data for Nigeria and Russia
+                const nigeria_russia_data = data.filter(d => d.Country === "Nigeria" || d.Country === "Russia");
 
-            const width = 800, height = 400;
+                const width = 800, height = 400;
 
-            // Create the SVG container for the plot
-            const svg = d3.select("#scatterPlot")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height);
+                // create SVG element
+                const svg = d3.select("#scatterPlot")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
 
-            // Scales for the axes
-            const xScale = d3.scaleLinear()
-                .domain([0, d3.max(nigeria_russia_data, d => +d.CO2_Emissions_MT)])
-                .range([50, width - 50]);
+                    const xScale = d3.scaleLinear()
+                    .domain([0, d3.max(nigeria_russia_data, d => +d.CO2_Emissions_MT)])
+                    .range([50, width - 50]);
 
-            const yScale = d3.scaleLinear()
-                .domain([0, d3.max(nigeria_russia_data, d => +d.Crop_Yield_MT_per_HA)])
-                .range([height - 50, 50]);
+                const yScale = d3.scaleLinear()
+                    .domain([0, d3.max(nigeria_russia_data, d => +d.Crop_Yield_MT_per_HA)])
+                    .range([height - 50, 50]);
 
-            const colorScale = d3.scaleOrdinal()
-                .domain(["Nigeria", "Russia"])
-                .range(["green", "orange"]);
+                const colorScale = d3.scaleOrdinal()
+                    .domain(["Nigeria", "Russia"])
+                    .range(["green", "orange"]);
 
-            // Add x-axis
-            svg.append("g")
-                .attr("transform", `translate(0,${height - 50})`)
-                .call(d3.axisBottom(xScale));
+                // add axes
+                svg.append("g")
+                    .attr("transform", `translate(0,${height - 50})`)
+                    .call(d3.axisBottom(xScale));
 
-            // Add y-axis
-            svg.append("g")
-                .attr("transform", "translate(50, 0)")
-                .call(d3.axisLeft(yScale));
+                svg.append("g")
+                    .attr("transform", "translate(50, 0)")
+                    .call(d3.axisLeft(yScale));
+                
+                // axis labels
+                svg.append("text")
+                    .attr("transform", `translate(${width / 2}, ${height - 10})`)
+                    .style("text-anchor", "middle")
+                    .text("CO2 Emissions (MT)");
 
-            // Scatter plot: CO2 Emissions vs Crop Yield
-            svg.selectAll("circle")
-                .data(nigeria_russia_data)
-                .enter()
-                .append("circle")
-                .attr("cx", d => xScale(+d.CO2_Emissions_MT))
-                .attr("cy", d => yScale(+d.Crop_Yield_MT_per_HA))
-                .attr("r", 8)
-                .attr("fill", d => colorScale(d.Country))
-                .on("mouseover", (event, d) => {
-                    // Show tooltip on hover
-                    d3.select(".tooltip")
-                        .style("opacity", 1)
-                        .html(`Country: ${d.Country}<br>CO2 Emissions: ${d.CO2_Emissions_MT}<br>Crop Yield: ${d.Crop_Yield_MT_per_HA}`)
-                        .style("left", `${event.pageX + 5}px`)
-                        .style("top", `${event.pageY - 28}px`);
-                })
-                .on("mouseout", () => {
-                    // Hide tooltip when mouse leaves
-                    d3.select(".tooltip")
-                        .style("opacity", 0);
-                });
+                svg.append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("x", -height / 2)
+                    .attr("y", 20)
+                    .style("text-anchor", "middle")
+                    .text("Crop Yield (MT per HA)");
 
-            // Tooltip (you can style it as needed)
-            d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
-        }).catch(function(error) {
-            console.error('Error loading the JSON:', error);
-        });
+                // scatter plot: CO2 Emissions vs Crop Yield
+                svg.selectAll("circle")
+                    .data(nigeria_russia_data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => xScale(+d.CO2_Emissions_MT))
+                    .attr("cy", d => yScale(+d.Crop_Yield_MT_per_HA))
+                    .attr("r", 8)
+                    .attr("fill", d => colorScale(d.Country))
+                    .on("mouseover", (event, d) => {
+                        d3.select(".tooltip")
+                            .style("opacity", 1)
+                            .html(`Country: ${d.Country}<br>CO2 Emissions: ${d.CO2_Emissions_MT}<br>Crop Yield: ${d.Crop_Yield_MT_per_HA}`)
+                            .style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", () => {
+                        d3.select(".tooltip")
+                            .style("opacity", 0);
+                    });
+
+                // Tooltip
+                d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+
+                // add legend
+                const legend = d3.select("#legend").append("svg")
+                    .attr("width", 200)
+                    .attr("height", 100);
+
+                const legendItems = [
+                    { country: "Nigeria", color: "green" },
+                    { country: "Russia", color: "orange" }
+                ];
+
+                const legendGroup = legend.selectAll("g")
+                    .data(legendItems)
+                    .enter().append("g")
+                    .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+
+                legendGroup.append("rect")
+                    .attr("width", 20)
+                    .attr("height", 20)
+                    .attr("fill", d => d.color);
+
+                legendGroup.append("text")
+                    .attr("x", 30)
+                    .attr("y", 15)
+                    .text(d => d.country)
+                    .style("font-size", "14px")
+                    .attr("alignment-baseline", "middle");
+            })
+            .catch(function(error) {
+                console.log("Error loading the JSON: ", error);
+            });
     </script>
 </body>
 </html>
