@@ -10,7 +10,7 @@ body {
 
 /* header */
 header {
-    background: #88d498; /* Light green */
+    background: #008080; /* teal */
     color: white;
     padding: 20px 0;
     position: sticky;
@@ -111,7 +111,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #88d498; /* Light green header */
+    background-color: #008080; /* teal header */
     color: white;
     font-size: 14px;
 }
@@ -125,7 +125,7 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-    background-color: #e6f5dc; /* Light green highlight */
+    background-color: #e6f5dc; /* Light teal highlight */
 }
 
 /* Sections */
@@ -140,7 +140,7 @@ section {
 
 section h2 {
     font-size: 22px;
-    color: #88d498; /* Light green */
+    color: #008080; /* teal */
     margin-bottom: 16px;
 }
 
@@ -161,7 +161,7 @@ section img {
 
 /* buttons */
 button {
-    background-color: #88d498; /* Light green */
+    background-color: #008080; /*teal */
     color: white;
     border: none;
     padding: 12px 24px;
@@ -173,7 +173,7 @@ button {
 }
 
 button:hover {
-    background-color: #5fa977; /* Darker green */
+    background-color: #006666; /* Darker teal */
     transform: translateY(-2px);
 }
 
