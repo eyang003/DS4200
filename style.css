@@ -90,7 +90,7 @@ nav ul li a:hover {
 
 /* main content */
 main {
-    padding: 32px;
+    padding: 16px;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -130,7 +130,7 @@ table tr:hover {
 
 /* Sections */
 section {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     padding: 24px;
     background: white;
     border: 1px solid #e0e0e0;
