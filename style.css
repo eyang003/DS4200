@@ -4,13 +4,13 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.8;
-    background-color: #9fd3c5; /* Soft off-white for a clean look */
+    background-color: #9fd3c5;
     color: #333;
 }
 
 /* header */
 header {
-    background: #20a17c; /* teal */
+    background: #20a17c;
     color: white;
     padding: 20px 0;
     position: sticky;
@@ -51,7 +51,16 @@ nav ul {
 
 nav ul li {
     display: inline;
+    font-size: 12px;
 }
+
+/* Ensure that strong elements inside list items do not affect size or line-height */
+ul li strong {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
 
 nav ul li a {
     text-decoration: none;
@@ -63,7 +72,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: rgb(23, 221, 158); /* Blue highlight */
+    background-color: rgb(23, 221, 158);
     color: white;
 }
 
@@ -93,6 +102,37 @@ main {
     padding: 16px;
     max-width: 900px;
     margin: 0 auto;
+}
+
+/* Sections */
+section {
+    margin-bottom: 16px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    font-size: 20px;  /* Reduced size */
+    color: #20a17c; /* teal */
+    margin-bottom: 16px;
+}
+
+section p {
+    margin-bottom: 16px;
+    font-size: 14px;  /* Reduced font size */
+    line-height: 1.6;  /* Adjusted line height for better spacing */
+    color: #444;
+}
+
+/* images */
+section img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* data summary table style */
@@ -126,37 +166,6 @@ table tr:nth-child(even) {
 
 table tr:hover {
     background-color: #82dbc1; /* Light teal highlight */
-}
-
-/* Sections */
-section {
-    margin-bottom: 16px;
-    padding: 24px;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-section h2 {
-    font-size: 22px;
-    color: #20a17c; /* teal */
-    margin-bottom: 16px;
-}
-
-section p {
-    margin-bottom: 16px;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #444;
-}
-
-/* images */
-section img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* buttons */
@@ -199,15 +208,15 @@ footer {
     }
 
     header h1 {
-        font-size: 28px;
+        font-size: 24px;  /* Slightly smaller header size on mobile */
     }
 
     section h2 {
-        font-size: 20px;
+        font-size: 18px;  /* Adjust for smaller screens */
     }
 
     section p {
-        font-size: 14px;
+        font-size: 12px;  /* Adjust for mobile devices */
     }
 
     button {
