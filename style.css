@@ -63,7 +63,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #10f2e3; /* Blue highlight */
+    background-color: rgb(14, 244, 171); /* Blue highlight */
     color: white;
 }
 
