@@ -1,0 +1,42 @@
+Group 1
+DS4200
+Professor Yang
+6 December 2024
+
+Final Project: Website Visualization Descriptions
+
+Website: https://eyang003.github.io/DS4200/
+
+The Problem 
+
+    The visualizations in this project use different marks and channels to help show the data clearly 
+and make it easier to understand. For example, a box plot was used to show how crop yields vary for different adaptation strategies. The rectangular marks display the spread of the data, with the y-axis showing crop yield values and the x-axis separating the strategies. This type of plot was chosen because it’s great for comparing how the data is distributed and showing any outliers, while keeping the design simple and clean by avoiding too much color.
+    
+    To show relationships between different factors, a heatmap correlation matrix was created. It uses colored rectangles to show the strength and direction of correlations between variables. The color intensity makes it easy to quickly see which factors are strongly related and which ones aren’t. This visualization is helpful because it gives a big-picture overview of the data.
+
+    The world map visualization presents the changes in average temperatures across countries from 1990 - 1991 to 2023 - 2024, with a color gradient representing the total temperature change in degrees Celsius. The red hues indicate regions where temperatures have significantly increased, while blue hues represent areas where temperatures have decreased. This visualization was chosen to provide a global perspective on temperature change and to highlight regional differences in climate trends. By visualizing these changes geographically, we can identify patterns, such as larger increases in certain regions like South Asia and parts of Europe, which might correspond to shifts in agricultural productivity and crop yields. Including this map allows us to explore the link between temperature change and crop yield impacts, emphasizing the global nature of these changes and their implications for food security.
+   
+    A contour plot was chosen to show how temperature and precipitation affect crop yields. Contour lines are used to represent zones of equal crop yields, with temperature on the x-axis and precipitation on the y-axis. This plot was picked because it’s an easy way to show how temperature seems to have a bigger impact on yields than precipitation, without making the chart too busy.
+   
+    Lastly, a bar chart was used to compare how crop yields have changed in different countries. The length of the bars shows the amount of change, and different colors were used to represent regions, making it easier to tell them apart. This chart was chosen because it clearly shows which countries are doing well and which ones are falling behind in crop yield improvements.
+   
+    To look at the relationship between CO2 emissions and crop yields in Nigeria and Russia, a scatter plot was used. Each data point is shown as a circle, with CO2 emissions on the x-axis and crop yields on the y-axis. Different colors (green for Nigeria and orange for Russia) help to tell the two countries apart. This type of plot works well to see patterns and trends between the two variables. Adding tooltips made the plot interactive, so users can explore specific data points more closely.
+
+Adaptation Strategies
+    
+    A series of box plots under the title "Effectiveness of Adaptation Strategies on Crop Yield," uses rectangular box marks to show the distribution of crop yields for each adaptation strategy. The x-axis categorizes the adaptation strategies (e.g., Crop Rotation, Drought-Resistant Crops, No Adaptation, Organic Farming, and Water Management), and the y-axis represents crop yield in metric tons per hectare. The median is indicated by the line within each box, and the whiskers represent the spread of the data. The green color of the boxes ensures consistency across the strategies while maintaining visual clarity. This visualization was chosen because it effectively displays variations, medians, and potential outliers for each strategy, enabling a direct comparison of their impacts on crop yield.
+
+    The second visualization, a bar chart titled "Soil Health Index by Adaptation Strategy," uses rectangular marks to represent the average soil health index for each adaptation strategy. The x-axis categorizes the adaptation strategies (Crop Rotation, No Adaptation, and Water Management), while the y-axis shows the average soil health index. The choice of a bar chart makes it easy to compare soil health scores across strategies at a glance. The consistent color scheme ensures simplicity and clarity, keeping the focus on the height of the bars, which directly reflects the soil health index values. This visualization helps to highlight the broader environmental impact of adaptation strategies beyond crop yields.
+
+Interactive plots and elements
+    Interactive elements, such as tooltips in the scatter plot, make the visualizations more engaging and allow users to explore the data independently. Colors were used thoughtfully—for example, green and orange for the countries or gradients in the heat map — ensuring the charts remained easy to read without being overwhelming. These design choices make the data easier to understand while maintaining visual appeal.
+
+    The interactive plot, titled "Top Adaptation Strategies for Selected Crop Type," uses rectangular marks to represent the number of crop types associated with the top adaptation strategies. The x-axis categorizes the adaptation strategies (Crop Rotation, Drought-Resistant Crops, No Adaptation, Organic Farming, and Water Management), while the y-axis shows the number of crop types for each strategy. At the bottom, there is a tooltip labeled "Crop Type." By clicking this box, you can select different crop types(Corn, Wheat, Coffee, Sugarcane, Fruits, Rice, Barley, Vegetables, Soybeans, and Cotton) to display. Rectangular marks of different colors represent different adaptation strategies. This makes it easier to distinguish the relationship between these adaptation strategies. The consistent blue color scheme ensures simplicity and clarity, keeping the focus on the height of the bars, which directly reflects the number of crop types. This interactive plot makes the visualizations more engaging and allows users to explore the data independently. 
+
+Adaptation Strategies on Soil Health
+    For this plot, a line chart titled "Adaptation Strategy and Soil Health Over Time," uses line marks to represent the number of soil health indexes for each adaptation strategy. The x-axis categorizes the adaptation strategies (Crop Rotation, Drought-Resistant Crops, No Adaptation, Organic Farming, Water Management, and Soil Health Index). At the same time, the y-axis shows the time change from 1990 to 2024. The choice of a line chart makes it easy to show the trend of soil health scores across strategies in different years. The various colors of each line represent a different adaptation strategy. This visualization helps to highlight which strategy is better followed by the trends in soil health most closely.
+
+
+
+
+
