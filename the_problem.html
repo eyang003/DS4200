@@ -111,7 +111,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         // d3 plot
-        d3.json("https://eyang003.github.io/DS4200/nigeria_russia_data.json")
+        d3.json(plots/"https://eyang003.github.io/DS4200/nigeria_russia_data.json")
             .then(function(data) {
                 // filter data for Nigeria and Russia
                 const nigeria_russia_data = data.filter(d => d.Country === "Nigeria" || d.Country === "Russia");
