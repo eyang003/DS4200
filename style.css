@@ -40,6 +40,7 @@ nav {
     padding: 12px 0;
 }
 
+/* Navigation bar styling */
 nav ul {
     list-style: none;
     padding: 0;
@@ -51,16 +52,8 @@ nav ul {
 
 nav ul li {
     display: inline;
-    font-size: 12px;
+    font-size: 14px; /* Match section p font size */
 }
-
-/* Ensure that strong elements inside list items do not affect size or line-height */
-ul li strong {
-    font-size: 1em;
-    font-weight: bold;
-    line-height: 1.6;
-}
-
 
 nav ul li a {
     text-decoration: none;
@@ -75,6 +68,22 @@ nav ul li a:hover {
     background-color: rgb(23, 221, 158);
     color: white;
 }
+
+/* general List styling */
+ul, li {
+    font-size: 14px; 
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+/* list styling within sections */
+section ul, section li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 
 /* github button styling */
 .github-btn {
